@@ -21,43 +21,28 @@
 var quiz = [
     {
         question: 'How do you Javascript?',
-        choiceA : 'Correct',
-        choiceB : 'Wrong',
-        choiceC : 'C',
-        choiceD : 'D',  
-        correct: 'Correct',
+        choices: ['You do', 'It does it on its own', 'What is Javascript', 'You are already doing it' ],  
+        answer: '4',
     },
     {
         question: 'Where do you come from?',
-        choiceA : 'A',
-        choiceB : 'B',
-        choiceC : 'C',
-        choiceD : 'D',  
-        correct: 'B',
+        choices: ['Here', 'From a different galaxy', 'Far far away', 'Mexico'],  
+        answer: '2',
     },
     {
         question: 'When was Javascript created?',
-        choiceA : 'Hello',
-        choiceB : 'B',
-        choiceC : 'C',
-        choiceD : 'D',  
-        correct: 'C',
+        choices: ['1964', '2003', '2008', '2012'], 
+        answer: '0',
     },
     {
         question: 'How do you declare a variable?',
-        choiceA : 'A',
-        choiceB : 'B',
-        choiceC : 'C',
-        choiceD : 'D',  
-        correct: 'D',
+        choices: ['const', 'var', 'wrong', 'True'],  
+        correct: '3',
     },
     {
         question: "How old are you?",
-        choiceA : 'A',
-        choiceB : 'B',
-        choiceC : 'C',
-        choiceD : 'D',  
-        correct: 'C',
+        choices: ['15', '18', '24', '30'],  
+        correct: '0',
     },
 ];
 
@@ -91,6 +76,8 @@ function getQuestion(){
 
     optionD.innerHTML ='<button>' + q.choiceD + '</button>';
 
+    currentQuestion ++;
+
 }
 
 function checkAnswer(answer){
@@ -104,12 +91,12 @@ function checkAnswer(answer){
     
 };
 
-function nextQuestion(){
-    for( i= 0; i < lastQuestion; i++){
-        currentQuestion ++;
-        getQuestion()
-    }
-}
+// function nextQuestion(){
+//     for( i= 0; i < lastQuestion; i++){
+//         currentQuestion ++;
+//         getQuestion();
+//     }
+// }
 
 
 function timer() {
