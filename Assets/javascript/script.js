@@ -22,7 +22,7 @@ var quiz = [
     {
         question: 'How do you Javascript?',
         choices: ['You do', 'It does it on its own', 'What is Javascript', 'You are already doing it' ],  
-        answer: '4',
+        answer: '1',
     },
     {
         question: 'Where do you come from?',
@@ -37,12 +37,12 @@ var quiz = [
     {
         question: 'How do you declare a variable?',
         choices: ['const', 'var', 'wrong', 'True'],  
-        correct: '3',
+        answer: '3',
     },
     {
         question: "How old are you?",
         choices: ['15', '18', '24', '30'],  
-        correct: '0',
+        answer: '0',
     },
 ];
 
@@ -65,23 +65,22 @@ startButton.addEventListener('click', startGame);
 
 function getQuestion(){
     let q = quiz[currentQuestion];
-
+    
     questionElement.textContent = q.question;
     
-    optionA.innerHTML ='<button>' + q.choiceA + '</button>';
+    optionA.innerHTML ='<button>' + q.choices[0] + '</button>';
 
-    optionB.innerHTML ='<button>' + q.choiceB + '</button>';
+    optionB.innerHTML ='<button>' + q.choices[1] + '</button>';
 
-    optionC.innerHTML ='<button>' + q.choiceC + '</button>';
+    optionC.innerHTML ='<button>' + q.choices[2] + '</button>';
 
-    optionD.innerHTML ='<button>' + q.choiceD + '</button>';
+    optionD.innerHTML ='<button>' + q.choices[3] + '</button>';
+    
 
-    currentQuestion ++;
-
-}
+};
 
 function checkAnswer(answer){
-    let q = quiz[currentQuestion].correct;
+    let q = quiz[currentQuestion].answer;
     if (q = answer){
         nextQuestion();
     } else {
@@ -91,12 +90,10 @@ function checkAnswer(answer){
     
 };
 
-// function nextQuestion(){
-//     for( i= 0; i < lastQuestion; i++){
-//         currentQuestion ++;
-//         getQuestion();
-//     }
-// }
+function nextQuestion(){    
+    currentQuestion ++;
+    getQuestion();    
+};
 
 
 function timer() {
@@ -110,7 +107,7 @@ function timer() {
       }
   
     }, 1000);
-  }
+  };
 
   function startGame() {
     if (startButton.style.display === "none") {
@@ -120,4 +117,4 @@ function timer() {
     
     getQuestion();
     timer();
-}
+};
