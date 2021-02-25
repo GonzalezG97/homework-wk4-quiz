@@ -5,22 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Assests/css/styles.css">
+    <link rel="stylesheet" href="Assets/css/styles.css">
 </head>
 <body>
+    <header>
+        <div id="countdown"></div>
+        <div id="results"></div>
+        <a id="score" href='highScores.html'> High Scores </a>
+    </header>
     <button id='start-game'>Start Game</button>
-    <a id="score" href='highScores.html'> High Scores </a>
+    
     <div id="gameContainer">
         <div id='question'></div>
         <div id="choices">
-            <div id="optionA" onclick="checkAnswer('0')"></div>
-            <div id="optionB" onclick="checkAnswer('1')"> </div>
-            <div id="optionC" onclick="checkAnswer('2')"> </div>
-            <div id="optionD" onclick="checkAnswer('3')"> </div>
+            <div id="optionA" onclick="checkAnswer(0)"> </div>
+            <div id="optionB" onclick="checkAnswer(1)"> </div>
+            <div id="optionC" onclick="checkAnswer(2)"> </div>
+            <div id="optionD" onclick="checkAnswer(3)"> </div>
         </div>
     </div>    
-    <div id="countdown"></div>
-    <div id="results"></div>
+    
 </body>
 <script src="Assets/javascript/script.js"></script>
 </html>

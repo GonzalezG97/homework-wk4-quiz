@@ -1,4 +1,15 @@
-#start-game {
-    background-color: grey;
+button {
+    background-color: lightgreen;
+    
+
 };
 
+#gameContainer {
+    padding: 35px;
+    margin: 25px;
+    background-color: black;
+};
+
+#countdown {
+    flex: right;
+}

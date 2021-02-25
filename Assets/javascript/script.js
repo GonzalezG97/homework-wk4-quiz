@@ -18,31 +18,30 @@
 // [{initials: "", score: "",}]
 // reset Page to start a new game
 
-var quiz = [
-    {
-        question: 'How do you Javascript?',
-        choices: ['You do', 'It does it on its own', 'What is Javascript', 'You are already doing it' ],  
-        answer: '1',
+var quiz = [{
+        question: 'Inside which HTML element do we put the JavaScript?',
+        choices: ['js', 'script', 'javascript', 'scripting'],
+        answer: 1,
     },
     {
-        question: 'Where do you come from?',
-        choices: ['Here', 'From a different galaxy', 'Far far away', 'Mexico'],  
-        answer: '2',
+        question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
+        choices: ['script name="xxx.js"', 'script href="xxx.js"', 'script src="xxx.js"', 'script value="xxx.js"'],
+        answer: 2,
     },
     {
         question: 'When was Javascript created?',
-        choices: ['1964', '2003', '2008', '2012'], 
-        answer: '0',
+        choices: ['1995', '2000', '1999', '1990'],
+        answer: 0,
     },
     {
         question: 'How do you declare a variable?',
-        choices: ['const', 'var', 'wrong', 'True'],  
-        answer: '3',
+        choices: ['const', 'var', 'i', 'let'],
+        answer: 3,
     },
     {
-        question: "How old are you?",
-        choices: ['15', '18', '24', '30'],  
-        answer: '0',
+        question: "Where is the correct place to insert a JavaScript?",
+        choices: ['head', 'body', 'footer', 'div'],
+        answer: 0,
     },
 ];
 
@@ -61,60 +60,69 @@ var choiceD = document.getElementById('optionD');
 var countdownClock = document.getElementById('countdown');
 var secondsLeft = 75;
 
+var finalScore = 0;
+
 startButton.addEventListener('click', startGame);
 
-function getQuestion(){
-    let q = quiz[currentQuestion];
-    
-    questionElement.textContent = q.question;
-    
-    optionA.innerHTML ='<button>' + q.choices[0] + '</button>';
-
-    optionB.innerHTML ='<button>' + q.choices[1] + '</button>';
-
-    optionC.innerHTML ='<button>' + q.choices[2] + '</button>';
-
-    optionD.innerHTML ='<button>' + q.choices[3] + '</button>';
-    
-
-};
-
-function checkAnswer(answer){
-    let q = quiz[currentQuestion].answer;
-    if (q = answer){
-        nextQuestion();
+function getQuestion() {
+    if (currentQuestion >= quiz.length) {
+        function endGame(){
+            
+        };        
     } else {
-        secondsLeft - 5;
-        nextQuestion();
-    };
-    
+        let q = quiz[currentQuestion];
+
+        questionElement.textContent = q.question;
+
+        optionA.innerHTML = '<button>' + q.choices[0] + '</button>';
+
+        optionB.innerHTML = '<button>' + q.choices[1] + '</button>';
+
+        optionC.innerHTML = '<button>' + q.choices[2] + '</button>';
+
+        optionD.innerHTML = '<button>' + q.choices[3] + '</button>';
+    }
+
 };
 
-function nextQuestion(){    
-    currentQuestion ++;
-    getQuestion();    
+function checkAnswer(answer) {
+    let q = quiz[currentQuestion].answer;
+    let a = answer;
+    if (q === a) {
+        currentQuestion++;
+        finalScore += 15;
+        getQuestion();
+    } else {
+        currentQuestion++;
+        secondsLeft -= 5;
+        finalScore -= 10;
+        getQuestion();
+    };
+
 };
+
 
 
 function timer() {
-    var timerInt = setInterval(function() {
-      secondsLeft--;
-      countdownClock.textContent = 'Time left: ' + secondsLeft;
-  
-      if(secondsLeft === 0) {
-        clearInterval(timerInt);
-        countdownClock.textContent = 'Time is up!';    
-      }
-  
-    }, 1000);
-  };
+    var timerInt = setInterval(function () {
+        secondsLeft--;
+        countdownClock.textContent = 'Time left: ' + secondsLeft;
 
-  function startGame() {
+        if (secondsLeft <= 0) {
+            clearInterval(timerInt);
+            countdownClock.textContent = 'Time is up!';
+        }
+
+    }, 1000);
+};
+
+function startGame() {
     if (startButton.style.display === "none") {
         startButton.style.display = "block";
     } else {
-        startButton.style.display = "none"};
-    
+        startButton.style.display = "none"
+    };
+
     getQuestion();
     timer();
 };
